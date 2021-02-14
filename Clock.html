@@ -1,0 +1,107 @@
+<html>
+  <body >
+  
+      <div id="clock">Here</div>
+      <img id="image" src="">
+   
+  </body>
+</html>
+<script>
+
+  var image = "";
+  let noon = 12;
+  let morning = 7;
+  let night = 19;
+
+   function currentTime(){
+
+    //let clock = document.getElementById('clock');
+
+    var date = new Date(); //Pega a data atual
+    var hour = date.getHours();//Pega a hora atual da variavel date e coloca na hour
+    var min = date.getMinutes();//Pega os minutos atual da variavel date e coloca na min
+    var sec = date.getSeconds();//Pega os segundos atual da variavel date e coloca na sec
+    hour = updateTime(hour);//atualiza as horas
+    min = updateTime(min);//atualiza os minutos
+    sec = updateTime(sec);//atualiza os segundos
+    var meridian = "AM";
+    document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + meridian;//coloca as horas, minutos e segundos no html
+    var t = setTimeout(function(){ currentTime() }, 1000); //timer para atualizar o relogio
+    var imageclock = document.getElementById("image");
+
+    if (hour >= noon)
+	  {
+		  meridian = "PM";
+	  }
+
+	  if (hour > noon)
+	  {
+		  hour = hour - 12;
+	  }
+
+    if (min < 10)
+    {
+        min = "0" + min;
+    }
+
+    if (sec < 10)
+    {
+        sec = "0" + sec;
+    }
+
+    imageclock.src = image;
+
+    if(hour == morning){
+      image = "https://i.imgur.com/iJpJpRD.png";
+    }
+    if(hour == noon){
+       image = "https://i.imgur.com/JPWHEBx.jpg";
+    }
+    if(hour == night){
+       image = "https://i.imgur.com/iFbvXWs.jpg";
+    }
+
+  };
+
+  function updateTime(k) {//atualiza o horario
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+  currentTime(); //executa a função principal
+
+
+
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+  body{
+    background-color: black;
+  }
+  
+  #clock{
+    text-align: center;    
+    font-family: 'Orbitron', sans-serif;
+    background-color: black;
+    color: chartreuse;
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    margin-top: 5%;
+  }
+
+  #image{    
+    display: block;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+</style>
