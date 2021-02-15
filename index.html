@@ -51,15 +51,16 @@
 
     imageclock.src = image;
 
-    if(hour == morning){
+   if(hour >= 7 && hour < 12){
       image = "https://i.imgur.com/iJpJpRD.png";
-    }
-    if(hour == noon){
+    }else
+    if(hour >= 12 && hour < 19){
        image = "https://i.imgur.com/JPWHEBx.jpg";
-    }
-    if(hour == night){
+    }else
+    if(hour >= 19){
        image = "https://i.imgur.com/iFbvXWs.jpg";
     }
+
 
   };
 
